@@ -13,6 +13,15 @@ describe("Test suite", () => {
         const spy = sinon.spy(myObj, "add");
         let arg1 = 10, arg2 = 20;
         myObj.callAnotherFn(arg1, arg2);
-        sinon.assert.calledOnce(spy);
+        // sinon.assert.calledOnce(spy);
+        expect(spy.calledOnce).to.be.true;
+        expect(spy.calledWith(10, 20)).to.be.true;
+    });
+
+    it("spy the callback method", () => {
+        const callback = sinon.spy();
+        myObj.callTheCallback(callback);
+        expect(callback.calledOnce).to.be.true;
+        
     });
 })
