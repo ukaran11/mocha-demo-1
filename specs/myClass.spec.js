@@ -22,6 +22,14 @@ describe("Test suite", () => {
         const callback = sinon.spy();
         myObj.callTheCallback(callback);
         expect(callback.calledOnce).to.be.true;
-        
+    });
+
+    it("mock the sayHello method", () => {
+        const mock = sinon.mock(myObj);
+        const expectation = mock.expects("sayHello");
+        expectation.exactly(1);
+        expectation.withArgs("Hello World");
+        myObj.callAnotherFn(10, 20);
+        mock.verify();
     });
 })
