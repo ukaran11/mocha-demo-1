@@ -22,6 +22,8 @@ class MyClass {
     callTheCallback(callback) {
         callback();
     }
+
+    
 }
 
 module.exports = MyClass;

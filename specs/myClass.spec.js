@@ -4,7 +4,7 @@ const sinon = require("sinon");
 const MyClass = require("../src/myClass");
 const myObj = new MyClass();
 
-describe("Test suite", () => {
+describe.skip("Test suite", () => {
     it("test the add method", () => {
         expect(myObj.add(1, 2)).to.be.equal(3);
     });
@@ -32,4 +32,12 @@ describe("Test suite", () => {
         myObj.callAnotherFn(10, 20);
         mock.verify();
     });
-})
+});
+
+describe("Test suite for stub", () => {
+    it("Stub the add method", () => {
+       const stub = sinon.stub(myObj, "add");
+       stub.withArgs(10, 20).returns(100);
+       expect(myObj.callAnotherFn(10, 20)).to.be.equal(100);
+    });
+});
