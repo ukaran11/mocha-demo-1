@@ -4,15 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha './specs/**/*.spec.js'"
+    "test": "mocha './specs/**/*.spec.js'",
+    "coverage": "nyc --reporter=lcov npm run test"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "chai": "^4.3.4",
-    "mocha": "^9.1.3"
+    "mocha": "^9.1.3",
+    "nyc": "^15.1.0"
+  },
+  "nyc": {
+    "include":"src",
+    "exclude":"specs"
   },
   "dependencies": {
+    "chai-as-promised": "^7.1.1",
     "sinon": "^12.0.1"
   }
 }
